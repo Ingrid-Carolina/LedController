@@ -1,6 +1,7 @@
 package com.ejemplo.ledcontroller
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -24,8 +25,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnToggles: Array<Button>
     private lateinit var etIPAddress: EditText
 
-    private var arduinoIP = "192.168.1.100"
+    private var arduinoIP = ""
     private var isConnected = false
+
+    companion object {
+        private const val TAG = "LEDController"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +69,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        btnConnect.setOnClickListener { connectToArduino() }
+        btnConnect.setOnClickListener {
+            if (isConnected) {
+                disconnect()
+            } else {
+                connectToArduino()
+            }
+        }
         btnRefresh.setOnClickListener { refreshLEDStatus() }
         btnAllOn.setOnClickListener { setAllLEDs(true) }
         btnAllOff.setOnClickListener { setAllLEDs(false) }
@@ -95,28 +106,59 @@ class MainActivity : AppCompatActivity() {
         }
 
         tvStatus.text = "Conectando..."
+        btnConnect.isEnabled = false
+
         CoroutineScope(Dispatchers.Main).launch {
             val result = withContext(Dispatchers.IO) {
                 try {
+                    Log.d(TAG, "Intentando conectar a: http://$arduinoIP")
+
                     val url = URL("http://$arduinoIP")
                     val connection = url.openConnection() as HttpURLConnection
                     connection.requestMethod = "GET"
                     connection.connectTimeout = 5000
                     connection.readTimeout = 5000
-                    connection.responseCode == 200
+                    connection.setRequestProperty("Connection", "close")
+
+                    val responseCode = connection.responseCode
+                    Log.d(TAG, "Código de respuesta: $responseCode")
+
+                    if (responseCode == 200) {
+                        val reader = BufferedReader(InputStreamReader(connection.inputStream))
+                        val response = reader.readText()
+                        reader.close()
+                        Log.d(TAG, "Respuesta: $response")
+
+                        // Verificar que sea JSON válido
+                        JSONObject(response)
+                        true
+                    } else {
+                        Log.e(TAG, "Código de respuesta inválido: $responseCode")
+                        false
+                    }
                 } catch (e: Exception) {
+                    Log.e(TAG, "Error de conexión: ${e.message}", e)
                     false
                 }
             }
 
+            btnConnect.isEnabled = true
             updateConnectionStatus(result)
+
             if (result) {
-                Toast.makeText(this@MainActivity, "Conexión exitosa", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "✅ Conexión exitosa", Toast.LENGTH_SHORT).show()
                 refreshLEDStatus()
             } else {
-                Toast.makeText(this@MainActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "❌ Error de conexión. Verifica la IP", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun disconnect() {
+        isConnected = false
+        arduinoIP = ""
+        updateConnectionStatus(false)
+        Toast.makeText(this, "Desconectado", Toast.LENGTH_SHORT).show()
     }
 
     private fun refreshLEDStatus() {
@@ -128,6 +170,8 @@ class MainActivity : AppCompatActivity() {
                     val url = URL("http://$arduinoIP")
                     val connection = url.openConnection() as HttpURLConnection
                     connection.requestMethod = "GET"
+                    connection.connectTimeout = 3000
+                    connection.readTimeout = 3000
 
                     val reader = BufferedReader(InputStreamReader(connection.inputStream))
                     val response = reader.readText()
@@ -138,6 +182,7 @@ class MainActivity : AppCompatActivity() {
 
                     BooleanArray(ledsArray.length()) { i -> ledsArray.getBoolean(i) }
                 } catch (e: Exception) {
+                    Log.e(TAG, "Error al obtener estado: ${e.message}", e)
                     null
                 }
             }
@@ -165,13 +210,25 @@ class MainActivity : AppCompatActivity() {
     private fun setAllLEDs(state: Boolean) {
         if (!isConnected) return
 
-        for (i in 1..6) {
-            val command = if (state) "on" else "off"
-            controlLED(i, command)
-        }
-
         CoroutineScope(Dispatchers.Main).launch {
-            delay(500)
+            for (i in 1..6) {
+                val command = if (state) "on" else "off"
+                withContext(Dispatchers.IO) {
+                    try {
+                        val url = URL("http://$arduinoIP/led/$i/$command")
+                        val connection = url.openConnection() as HttpURLConnection
+                        connection.requestMethod = "GET"
+                        connection.connectTimeout = 2000
+                        connection.readTimeout = 2000
+                        connection.responseCode
+                    } catch (e: Exception) {
+                        Log.e(TAG, "Error en LED $i: ${e.message}")
+                    }
+                }
+                delay(100)
+            }
+
+            delay(300)
             refreshLEDStatus()
         }
     }
@@ -184,17 +241,19 @@ class MainActivity : AppCompatActivity() {
                     val connection = url.openConnection() as HttpURLConnection
                     connection.requestMethod = "GET"
                     connection.connectTimeout = 3000
+                    connection.readTimeout = 3000
                     connection.responseCode == 200
                 } catch (e: Exception) {
+                    Log.e(TAG, "Error al controlar LED $ledNumber: ${e.message}")
                     false
                 }
             }
 
             if (result) {
-                delay(100)
+                delay(150)
                 refreshLEDStatus()
             } else {
-                Toast.makeText(this@MainActivity, "Error al controlar LED", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Error al controlar LED $ledNumber", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -203,13 +262,13 @@ class MainActivity : AppCompatActivity() {
         isConnected = connected
         runOnUiThread {
             if (connected) {
-                tvStatus.text = "Conectado"
+                tvStatus.text = "🟢 CONECTADO"
                 tvStatus.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
-                btnConnect.text = "Desconectar"
+                btnConnect.text = "🔌 DESCONECTAR"
             } else {
-                tvStatus.text = "Desconectado"
+                tvStatus.text = "🔴 DESCONECTADO"
                 tvStatus.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))
-                btnConnect.text = "Conectar"
+                btnConnect.text = "🔗 CONECTAR"
             }
             enableControls(connected)
         }
