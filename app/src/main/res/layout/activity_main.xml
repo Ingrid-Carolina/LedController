@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/medical_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,11 +11,11 @@
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
-        <!-- Header Moderno con Gradiente -->
+        <!-- Header Médico -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/header_gradient"
+            android:layout_height="220dp"
+            android:background="@drawable/medical_gradient"
             android:elevation="8dp"
             android:padding="24dp">
 
@@ -26,33 +26,40 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_smart_home"
-                    android:tint="@color/white"
-                    android:contentDescription="@string/app_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏥"
+                    android:textSize="56sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Control Inteligente"
+                    android:layout_marginTop="8dp"
+                    android:text="Sistema de Órganos"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Monitor Interactivo"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/status_badge"
-                    android:paddingStart="16dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="6dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
                     android:text="🔴 Desconectado"
                     android:textColor="@color/white"
                     android:textSize="14sp"
@@ -67,17 +74,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="-50dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,19 +92,19 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_wifi"
-                        android:tint="@color/colorPrimary" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔌"
+                        android:textSize="28dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Configuración de Red"
-                        android:textColor="@color/text_primary"
-                        android:textSize="18sp"
+                        android:layout_marginStart="12dp"
+                        android:text="Conexión al Sistema"
+                        android:textColor="@color/medical_primary"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -105,15 +112,15 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:hint="Dirección IP del Arduino"
                     app:boxBackgroundColor="@color/input_background"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusTopStart="14dp"
                     app:startIconDrawable="@drawable/ic_network"
-                    app:startIconTint="@color/colorPrimary"
+                    app:startIconTint="@color/medical_primary"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -129,20 +136,51 @@
                 <Button
                     android:id="@+id/btnConnect"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="16dp"
-                    android:text="🔗 Conectar Dispositivo"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="20dp"
+                    android:text="🔗 Conectar al Sistema"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:cornerRadius="12dp"
-                    android:backgroundTint="@color/colorPrimary" />
+                    app:cornerRadius="14dp"
+                    android:backgroundTint="@color/medical_primary" />
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Sección de LEDs -->
+        <!-- Título de Órganos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🫀 Órganos Vitales"
+                android:textColor="@color/medical_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:text="🔄"
+                android:textSize="18sp"
+                android:enabled="false"
+                app:cornerRadius="22dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+        <!-- Sección de Órganos -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,95 +188,95 @@
             android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="💡 Dispositivos"
-                    android:textColor="@color/text_primary"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnRefresh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="🔄"
-                    android:textSize="16sp"
-                    android:enabled="false"
-                    app:cornerRadius="20dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-
-            </LinearLayout>
-
-            <!-- LED 1 - Sala Principal -->
+            <!-- Páncreas -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_pancreas"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pancreas"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="es una glándula del abdomen ubicada detrás del estómago con dos funciones principales: es exocrino, produciendo enzimas digestivas que se vierten en el intestino delgado para descomponer los alimentos; y es endocrino, ya que produce hormonas como la insulina, que regula el azúcar en la sangre. "
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle1"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed1"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="🩺"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Páncreas"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Glándula abdominal que regula el azúcar en sangre mediante insulina"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle1"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -246,67 +284,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LED 2 - Cocina -->
+            <!-- Corazón -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_heart"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Corazon"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="es un músculo que bombea sangre a todo el cuerpo, tiene el tamaño aproximado de un puño y se encuentra en el centro del pecho."
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle2"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed2"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="❤️"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Corazón"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Músculo que bombea sangre a todo el cuerpo continuamente"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle2"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -314,67 +380,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LED 3 - Dormitorio -->
+            <!-- Estómago -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_stomach"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Estomago"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="es un órgano muscular hueco en la parte superior del abdomen, que recibe alimentos del esófago, los mezcla con jugos gástricos y comienza la digestión de proteínas para enviarlos luego al intestino delgado"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle3"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed3"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="🫃"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Estómago"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Órgano que digiere alimentos mediante jugos gástricos"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle3"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -382,67 +476,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LED 4 - Baño -->
+            <!-- Pulmones -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_lungs"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pulmones"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="son los órganos principales del sistema respiratorio, ubicados en la cavidad torácica, a ambos lados del corazón"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle4"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed4"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="🫁"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Pulmones"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Órganos respiratorios que intercambian oxígeno y CO₂"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle4"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -450,67 +572,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LED 5 - Jardín -->
+            <!-- Riñones -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_kidneys"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Riñones"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="son dos órganos en forma de frijol, ubicados a cada lado de la columna vertebral en la parte media de la espalda, que filtran los desechos y el exceso de líquidos de la sangre para producir orina"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle5"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed5"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="🩸"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Riñones"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Filtran desechos de la sangre y producen orina"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle5"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -518,67 +668,95 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LED 6 - Garaje -->
+            <!-- Intestinos -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/organ_intestines"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:background="@drawable/organ_card_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Intestinos"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="son un tubo muscular largo en el abdomen donde se completa la digestión, se absorben nutrientes y agua, y se eliminan los desechos en forma de heces"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btnToggle6"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginEnd="8dp"
-                            android:enabled="false"
-                            android:text="🔄"
-                            android:textSize="18sp"
-                            app:cornerRadius="24dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <Switch
-                            android:id="@+id/switchLed6"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/organ_icon_bg"
+                                    android:gravity="center"
+                                    android:text="🔬"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:text="Intestinos"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Absorben nutrientes y eliminan desechos del cuerpo"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:minHeight="48dp" />
+                            android:layout_marginStart="12dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/switchLed6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false" />
+
+                            <Button
+                                android:id="@+id/btnToggle6"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:enabled="false"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                app:cornerRadius="25dp"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -586,7 +764,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Botones de Control Grupal -->
+            <!-- Botones de Control Global -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -596,30 +774,30 @@
                 <Button
                     android:id="@+id/btnAllOn"
                     android:layout_width="0dp"
-                    android:layout_height="56dp"
+                    android:layout_height="60dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#4CAF50"
+                    android:backgroundTint="@color/medical_success"
                     android:enabled="false"
-                    android:text="✅ Todo Encender"
+                    android:text="✅ Activar Todos"
                     android:textAllCaps="false"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    app:cornerRadius="12dp" />
+                    app:cornerRadius="14dp" />
 
                 <Button
                     android:id="@+id/btnAllOff"
                     android:layout_width="0dp"
-                    android:layout_height="56dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#F44336"
+                    android:backgroundTint="@color/medical_error"
                     android:enabled="false"
-                    android:text="❌ Todo Apagar"
+                    android:text="❌ Desactivar Todos"
                     android:textAllCaps="false"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    app:cornerRadius="12dp" />
+                    app:cornerRadius="14dp" />
 
             </LinearLayout>
 
@@ -630,32 +808,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="18dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📊 Estado del Sistema"
-                    android:textColor="@color/text_primary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📊"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Monitor del Sistema"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvLedStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/status_background"
                     android:lineSpacingExtra="4dp"
-                    android:padding="12dp"
-                    android:text="Estado: Esperando conexión..."
+                    android:padding="16dp"
+                    android:text="🔍 Estado: Esperando conexión al sistema..."
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
 
